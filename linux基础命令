@@ -48,18 +48,61 @@ mkdir dirname{E..L}-tmp.txt
 history 10:显示最近10条历史命令
 7.vim编辑工具
 vim的三种模式:命令行模式(:wq、:q可进入该模式)、未编辑模式(最开始进入的模式，左下角有文件名)、编辑模式(输入a进入该模式,最下角有插入或insert字符)
+进入编辑模式:a
+退出编辑模式:ESC
+进入命令行模式::
+退出命令行模式:退格键
+命令行模式命令
 编辑文件后保存退出:Esc+:wq
 编辑文件输入内容后不保存退出:Esc+:q!
 编辑文件不做任何操作直接退出:Esc+:q
+编辑模式的命令
 yy:复制
 p:粘贴
 dd:删除
+u:撤销上一步操作,这个可以防止误操作。
+ctrl + r:反撤销
+
 $:光标跳到行尾
 ^:光标跳到行首
 gg:跳到首行的行首
 G:跳到最后一行的行首
 /搜索内容:进行搜索查找
 /不存在的字符串:可以取消高亮显示
-u:撤销上一步操作,这个可以防止误操作。
+
 上述命令需在未编辑模式下进行
-8.cat命令 filename；查看文件内容
+8.cat命令(查看文件内容)
+cat filename；查看文件内容
+cat - n filename:查看文件内容并显示行号
+head filename:查看文件内容的前10行
+head - n 4 filename:查看文件内容的前4行
+tail filename:查看文件内容的后10行
+tail - n 4 filename:查看文件内容的后4行
+more filename:查看文件内容，尽命令行终端的屏幕最大空间去显示，显示不下时分屏显示(可通过Enter进入第二屏、第三屏等后面屏幕的内容，
+如果分屏的话)按q退出分屏查看的模式
+9.mv命令
+mv filename dirname:将文件filename移动到目录dirname下
+mv filename1 filename2:将文件filename1重命名为filename2
+rm -rf dirname:删除目录，并递归删除目录下所有文件
+rm -f filename:删除文件
+10.cp命令
+cp  filename1 filename2: 将filename1拷贝到当前目录下，要求filename2不存在
+cp  filename1 dirname: 将filename1拷贝到dirname目录下
+cp  -r dirname1 dirname2: 将dirname1以及该目录下的所有文件拷贝到当前目录下，要求dirname2不存在
+cp  -r dirname1 dirname2: 将dirname1以及该目录下的所有文件拷贝到dirname2目录下
+11.文件解压缩
+tar命令
+压缩:tar acvf 压缩包名 要压缩的文件
+解压缩:tar xf 压缩包名
+zip命令
+zip -r newfilename objfilename:将objfilename压缩成newfilename.zip
+zip -r newfilename objdirname:将objdirname以及该目录下的所有文件压缩成newfilename.zip
+unzip objfilename.zip:将 objfilename.zip解压缩
+12.wget命令
+wget 服务器文件地址:从服务器下载文件
+13.链接文件
+ln命令
+ln -s 源文件 软连接文件
+
+
+
