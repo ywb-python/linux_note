@@ -17,6 +17,7 @@
     可执行文件 绿色
     链接文件 浅蓝色
     普通文件 黑色字体
+    压缩文件 红色字体
 
 二、命令
 1.ls命令(查看目录下文件信息)
@@ -93,7 +94,15 @@ cp  -r dirname1 dirname2: 将dirname1以及该目录下的所有文件拷贝到d
 11.文件解压缩
 tar命令
 压缩:tar acvf 压缩包名 要压缩的文件
+参数
+v:显示压缩过程
+f:压缩后的文件的名字，必须存在
+z:压缩文件的格式，必须存在
+c:指定压缩的时候，使用压缩。必须存在
+C:指定压缩后文件的存放位置
 解压缩:tar xf 压缩包名
+x:解压缩
+C:指定压缩后文件的存放位置
 zip命令
 zip -r newfilename objfilename:将objfilename压缩成newfilename.zip
 zip -r newfilename objdirname:将objdirname以及该目录下的所有文件压缩成newfilename.zip
@@ -102,7 +111,20 @@ unzip objfilename.zip:将 objfilename.zip解压缩
 wget 服务器文件地址:从服务器下载文件
 13.链接文件
 ln命令
-ln -s 源文件 软连接文件
+ln -s 源文件 软链接文件
+链接文件与源文件不能同名
+删除软链接文件对源文件无影响，反之删除源文件对软链接文件有影响
+14.用户管理
+id:查看当前用户信息
+id 用户名:查看其他用户信息
+whoami:查看当前用户是谁
+su -:切换到root用户
+su - 用户名:切换到普通用户
+useradd:创建用户
+passwd:设置用户密码
+
+
+
 
 
 
