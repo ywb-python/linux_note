@@ -1,0 +1,36 @@
+1.查看电脑ip地址:ifconfig
+2.ip和端口
+常见ip地址
+127.0.0.1:当前系统的本地地址
+192.168.x.x:当前局域网的ip地址段(x位于0-254)
+常见端口
+22 ssh服务的端口
+80 web服务的端口
+3306 数据库的端口
+9000 php的端口
+3.域名
+本机域名在/etc/hosts文件中配置，按照ip和域名的对应关系进行添加配置即可
+eg:127.0.0.1 localhost localhost.admin
+一个ip地址可以对应多个域名
+4.配置计算机网络
+4.1 网络配置流程
+(1)配置虚拟机的ip地址未静态ip
+ls /etc/sysconfig/network-scripts/ifcfg-eth0
+ls /etc/init.d/network
+vim /etc/sysconfig/network-scripts/ifcfg-eth0
+编辑使得文件内容如下:
+DEVICE=eth0
+BOOTPROTO=none
+ONBOOT=yes
+TYPE=Ethernet
+IPADDR=192.168.8.14
+NETMASK=255.255.255.0
+GATEWAY=192.168.8.2
+DNSI=192.168.8.2
+(2)重启虚拟机网卡服务
+/etc/init.d/network restart
+(3)VMware配置网卡ip段
+(4)检测虚拟机的网络适配器
+ping
+整体测试
+注意:使用root用户进行配置
