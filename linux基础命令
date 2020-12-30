@@ -44,6 +44,7 @@ mkdir命令创建多个文件
 方式3: mkdir dirname{5..8}
 mkdir dirname{E..L}-tmp.txt
 注:三种方式效果相同，都会创建dirname5、dirname6、dirname7、dirname8这四个文件，速度来说方式3>方式2>方式1
+mkdir test/adc -p:创建多级目录
 6.history命令
 显示历史命令
 history 10:显示最近10条历史命令
@@ -174,8 +175,37 @@ find path -name 'filename':去path路径下查找文件名为filename的文件�
 filename支持正则表达式
 find / -name 'install.log'
 find / -name '*ting*'
-2.| 管道符
-命令1 | 命令2 ：
+2.grep命令
+grep 关键字:使用关键字进行过滤
+命令1 | grep keyword:获取命令1的执行结果中包含关键字keyword的内容
+grep 关键字 filename：获取filename文件中包含关键字的内容
+grep -v 关键字 filename：获取filename文件中不包含关键字的内容,与上一条命令相反
+grep -n 关键字 filename：获取filename文件中包含关键字的内容，并显示行号
+grep -vn 关键字 filename：获取filename文件中不包含关键字的内容,与上一条命令相反，并显示行号
+3.| 管道符
+命令1 | 命令2 ：命令1执行后的结果通过管道符,传递给命令2使用
+4.echo命令
+echo "123"：向屏幕输出字符串123
+5.重定向
+>:以覆盖的方式将内容添加到文件中
+>>:以追加的方式将内容添加到文件的末尾
+echo "123">a.txt:将字符串123写入到文件a.txt,
+6.uname命令
+uname -a:显示当前系统所有的内核信息
+uname -r:显示当前系统内核版本号
+uname -n:显示当前系统主机名
+uname -m:显示当前系统内核的架构版本号
+7.free命令
+free:显示系统内存的使用情况，包括物理内存、交换内存(swap)和内核缓冲区内存
+free -m:以MB为单位显示内存使用情况
+free -h:以合适的单位显示内存使用情况，最大为三位数，自动计算对应的单位值
+free -h -s 3:每隔3秒输出一次内存的情况，直至按下ctrl + C为止
+8.df命令
+df:列出文件系统的整体磁盘空间使用情况。可以用来查看磁盘已被使用多少空间和还剩余多少空间
+df -h:以人们易读的GB、MB、KB等格式显示磁盘空间使用情况
+
+
+
 
 
 
