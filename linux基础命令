@@ -114,7 +114,53 @@ ln命令
 ln -s 源文件 软链接文件
 链接文件与源文件不能同名
 删除软链接文件对源文件无影响，反之删除源文件对软链接文件有影响
-14.用户管理
+14.文件权限
+drwx-xr-x 2 admin admin 4096 Nov 3 09:50 Desktop
+d:文件类型
+rwx:属主权限
+xr:属组权限
+x:其他用户权限
+文件读写执行权限
+读权限：对文件而言，代表文件可读(若一个目录没有可读权限，则不能通过ls查看该目录的内容)
+写权限: 对文件而言，代表文件可以编辑、创建、删除(若一个目录没有写权限，则不能再该目录下创建文件，也不能删除或修改该目录下的文件)
+执行权限：对文件而言，代表文件可以执行(若一个目录没有可执行权限，则不能通过cd进入该目录) ,相当于windows下的双击执行
+文件读写权限的操作
++ 增加权限
+- 撤销权限
+= 设定权限
+文件归属权限
+属主 u 这个文件是归谁所有，这是唯一的
+属组 g 这个文件是属于哪个组，这个组中的所有成员都有权限操作这个文件，这个是不唯一的
+其他用户 o 就是其他用户，不属于user,也不属于group
+eg:
+需求:
+root用户创建了/data/file.sh
+权限信息如下:- rw-rw-r
+普通用户admin想执行/data/file.sh
+分析及解决:
+(1)
+文件 --- 没有执行权限
+用户 --- root用户只有读写权限
+先让root用户有可执行权限
+chmod +x file.sh:给属主、属组、其他用户都加了可执行权限
+此时文件信息变为:- rwx-rwx-rx
+(2)关闭该文件的其他用户的可执行权限
+chmod o-x file.sh:去掉其他用户的可执行权限
+此时文件信息变为:- rwx-rwx-r
+(3)root用户测试
+./data/file.sh
+(4)更改该文件的用户权限
+chown -R admin.admin /data/file.sh
+(5)普通用户admin测试
+su - admin
+./data/file.sh
+chmod命令:
+chmod [用户符号][操作符号][操作权限] 文件
+eg:chmod o-x file.sh
+chown [属主].[属组] 目录
+eg：chown -R admin.admin /data/file.sh
+15.用户权限
+用户管理
 id:查看当前用户信息
 id 用户名:查看其他用户信息
 whoami:查看当前用户是谁
@@ -122,7 +168,14 @@ su -:切换到root用户
 su - 用户名:切换到普通用户
 useradd:创建用户
 passwd:设置用户密码
-
+16.查找命令
+1.查找文件 find命令
+find path -name 'filename':去path路径下查找文件名为filename的文件信息
+filename支持正则表达式
+find / -name 'install.log'
+find / -name '*ting*'
+2.| 管道符
+命令1 | 命令2 ：
 
 
 
